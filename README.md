@@ -1,4 +1,4 @@
-# iOS9AdaptationTips（iOS9开发学习交流群：141607754）
+# iOS9AdaptationTips（iOS9开发学习交流群：523070828）
 
 
 
@@ -23,6 +23,7 @@ iOS9适配系列教程【中文在[页面下方](https://github.com/ChenYilong/i
  3.  [企业级分发](https://github.com/ChenYilong/iOS9AdaptationTips#3企业级分发) 
   1.  [iOS9以后，企业级分发ipa包将遭到与Mac上dmg安装包一样的待遇：默认不能安装，也不再出现“信任按钮”](https://github.com/ChenYilong/iOS9AdaptationTips#1-ios9以后企业级分发ipa包将遭到与mac上dmg安装包一样的待遇默认不能安装也不再出现信任按钮) 
   2.  [iOS9以后，企业分发时可能存在：下载的ipa包与网页两者的 bundle ID 无法匹配而导致下载失败的情况](https://github.com/ChenYilong/iOS9AdaptationTips#2-ios9以后企业分发时可能存在下载的ipa包与网页两者的-bundle-id-无法匹配而导致下载失败的情况) 
+  3.   [iOS9以后，企业APP安装之后，在网络情况为Wi-Fi环境的时候，可能会出现无法验证应用的情况](https://github.com/ChenYilong/iOS9AdaptationTips#3-企业app安装之后在网络情况为wi-fi环境的时候可能会出现无法验证应用的情况出现以下提示) 
  4.  [Bitcode](https://github.com/ChenYilong/iOS9AdaptationTips#4bitcode) 
  5.  [iOS9 URL Scheme 适配_引入白名单概念（见Demo3）](https://github.com/ChenYilong/iOS9AdaptationTips#5demo3---ios9-url-scheme-适配_引入白名单概念) 
      1.   [常见 URL Scheme](https://github.com/ChenYilong/iOS9AdaptationTips#常见-url-scheme) 
@@ -36,10 +37,16 @@ iOS9适配系列教程【中文在[页面下方](https://github.com/ChenYilong/i
   3.  [Xcode7 在 debug 状态下也生成 .dSYM 文件引起的警告](https://github.com/ChenYilong/iOS9AdaptationTips#xcode7-在-debug-状态下也生成-dsym-文件引起的警告) 
   4.  [Xcode7 无法使用 8.x 系统的设备调试，一运行就报错 there is an intenal API error](https://github.com/ChenYilong/iOS9AdaptationTips#xcode7-无法使用-8x-系统的设备调试一运行就报错-there-is-an-intenal-api-error) 
   5.  [使用了 HTML 的 iframe 元素可能导致无法从 Safari 跳转至 App](https://github.com/ChenYilong/iOS9AdaptationTips#使用了-html-的-iframe-元素可能导致无法从-safari-跳转至-app) 
-  5.  [iOS9锁屏控制台会打印警告](https://github.com/ChenYilong/iOS9AdaptationTips#iOS9锁屏控制台会打印警告)
-
- 9.  [Demo5、Demo6--- 搜索 API](https://github.com/ChenYilong/iOS9AdaptationTips#9demo5demo6----搜索-api) 
+  6.  [iOS9锁屏控制台会打印警告](https://github.com/ChenYilong/iOS9AdaptationTips#ios9锁屏控制台会打印警告)
+  7. [Xcode7 上传应用时提示 ITMS-90535 Unable to publish iOS app with xxx SDK 的问题](http://stackoverflow.com/questions/32622899/itms-90535-unable-to-publish-ios-app-with-latest-google-signin-sdk)
+  8.  [在didFinishLaunchingWithOptions结束后还没有设置window的rootViewController会导致崩溃](https://github.com/ChenYilong/iOS9AdaptationTips#在didfinishlaunchingwithoptions结束后还没有设置window的rootview
+controller会导致崩溃) 
+ 9.  [Demo5、Demo6--- 搜索 API](https://github.com/ChenYilong/iOS9AdaptationTips#9demo5demo6----搜索-api)  
  10.   [iOS国际化问题：当前设备语言字符串返回有变化](https://github.com/ChenYilong/iOS9AdaptationTips#10ios国际化问题当前设备语言字符串返回有变化) 
+ 11.  [UITableView显示异常](https://github.com/ChenYilong/iOS9AdaptationTips#11uitableview显示异常) 
+  1.  [代码创建的 tableView 无法隐藏 cell 分割线](https://github.com/ChenYilong/iOS9AdaptationTips#代码创建的-tableview-无法隐藏-cell-分割线) 
+  2. [reloadData 刷新失效](https://github.com/ChenYilong/iOS9AdaptationTips#reloaddata-刷新失效)
+
 
 
 
@@ -477,6 +484,7 @@ SSL/TLS的作用，打个比方来讲：
 也别担心，Apple都替你考虑好了：
 
  ![enter image description here](http://i61.tinypic.com/ae9tgj.jpg)
+ 
  正如你在上图中看到的：苹果官方提供了一些可选配置项来决定是否开启ATS模式，也就是可以选择开启或者不开启。
 
  开发者可以针对某些确定的URL不使用ATS，这需要在工程中的info.plist中标记NSExceptionDomains。在NSExceptionDomains字典中，可以显式的指定一些不使用ATS的URL。这些你可以使用的例子可以是:
@@ -514,10 +522,10 @@ SSL/TLS的作用，打个比方来讲：
 
 |--| 分类名|解释|
 -------------|-------------|-------------
-1.|HTTPS Only （只有HTTPS，所有情况下都使用ATS）|如果你的应用只基于支持HTTPS的服务器，那么你太幸运了。你的应用不需要做任何改变。但是，注意App Transport Security要求TLS 1.2而且它要求站点使用支持forward secrecy协议的密码。证书也要求是符合ATS规格的。因此慎重检查与你的应用交互的服务器是不是符合ATS的要求非常重要。
-2.|Mix & Match（混合）|你的应用与一个不符合ATS要求的服务器工作是很有可能的。在这种情况下，你需要告诉操作系统哪些站点是涉及到的然后在你的应用的 Info.plist文件中指明哪些要求没有达到。
-3.|Opt Out（禁用ATS）|如果你在创建一个网页浏览器，那么你有一个更大的麻烦。因为你不可能知道你的用户将要访问那个网页，你不可能指明这些网页是否支持ATS要求且在HTTPS上传输。在这种情况下，除了全部撤销 App Transport Security 没有其它办法。
-4.|Opt Out With Exceptions（除特殊情况外，都不使用ATS）|当你的应用撤消了App Transport Security,，但同时定义了一些例外。这非常有用就是当你的应用从很多的服务器上取数据，但是也要与一个你可控的API交互。在这种情况下，在应用的Info.plist文件中指定任何加载都是被允许的，但是你也指定了一个或多个例外来表明哪些是必须要求 App Transport Security的。
+1.|HTTPS Only （只有HTTPS，所有情况下都使用ATS）|如果你的应用只基于支持HTTPS的服务器，你的应用不需要做任何改变。但是，注意App Transport Security要求TLS 1.2，而且它要求站点使用支持forward secrecy协议的密码。证书也要求是符合ATS规格的。因此慎重检查与你的应用交互的服务器是不是符合ATS的要求。
+2.|Mix & Match（混合）|如果你的服务器不符合ATS要求，你需要在你的应用的 Info.plist 文件中说明哪些地址是不符合ATS要求的。
+3.|Opt Out（禁用ATS）|如果你在创建一个网页浏览器，因为你不能确定用户将要访问哪个网页，也就不可能指明这些网页是否支持ATS要求且在HTTPS上传输。在这种情况下，只能配置为禁用ATS。
+4.|Opt Out With Exceptions（除特殊情况外，都不使用ATS）|如果想禁用ATS的同时又想定义一些例外。这个应用场景是当你的应用需要从很多不符合ATS要求的服务器上取数据，但是也要与一个你可控的API(符合ATS要求)交互。在这种情况下，需要在应用的 Info.plist 文件中配置为允许所有请求，但是你也指定了一个或多个例外来表明哪些请求是必须符合ATS的要求。
 
 下面分别做一下介绍：
 
@@ -529,7 +537,7 @@ SSL/TLS的作用，打个比方来讲：
 但也有人遇到过这样的疑惑：服务器已支持TLS 1.2 SSL ，但iOS9上还是不行，还要进行本文提出的适配操作。
 
 
-那是因为：要注意 App Transport Security 要求 TLS 1.2，而且它要求站点使用支持forward secrecy协议的密码。证书也要求是符合ATS规格的，ATS只信任知名CA颁发的证书，小公司所使用的 self signed certificate，还是会被ATS拦截。。因此慎重检查与你的应用交互的服务器是不是符合ATS的要求非常重要。对此，建议使用下文中给出的NSExceptionDomains，并将你们公司的域名挂在下面。
+那是因为：要注意 App Transport Security 要求 TLS 1.2，而且它要求站点使用支持forward secrecy协议的密码。证书也要求是符合ATS规格的，ATS只信任知名CA颁发的证书，小公司所使用的 self signed certificate，还是会被ATS拦截。因此慎重检查与你的应用交互的服务器是不是符合ATS的要求非常重要。对此，建议使用下文中给出的NSExceptionDomains，并将你们公司的域名挂在下面。
 
 官方文档 [ ***App Transport Security Technote*** ](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/index.html#//apple_ref/doc/uid/TP40016240) 对CA颁发的证书要求：
 
@@ -539,9 +547,10 @@ Invalid certificates result in a hard failure and no connection
 
 
 ####2.Mix & Match（混合）	
-你的应用与一个不符合ATS要求的服务器工作是很有可能的，
 
-当你遇到以下三个不符合 ATS 要求的服务器的域名时：
+如果你的服务器不符合ATS要求。
+
+比如当你遇到以下三个不符合 ATS 要求的服务器的域名时：
 
  1. api.insecuredomain.com
  2. cdn.domain.com
@@ -555,24 +564,30 @@ Invalid certificates result in a hard failure and no connection
 
 
  ```XML
-        <key>NSAppTransportSecurity</key>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
         <dict>
-            <key>NSExceptionDomains</key>
+            <key>api.insecuredomain.com</key>
             <dict>
-                <key>api.insecuredomain.com</key>
-                <dict>
-                    <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                    <false/>
-                </dict>
+                
+                <!--允许App进行不安全的HTTP请求-->
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                
+                <!--适用于这个特定域名下的所有子域-->
+                <key>NSIncludesSubdomains</key>
+                <true/>
             </dict>
         </dict>
+    </dict>
  ```
 
 
  在 plist 文件里显示如下：
 
 
- ![enter image description here](http://i60.tinypic.com/24y5q4l.jpg)
+ ![enter image description here](http://i59.tinypic.com/fxtk0j.jpg)
 
  我们定义的第一个“例外”（Exception）告诉ATS当与这个子域交互的时候撤销了必须使用HTTPS的要求。注意这个仅仅针对在“例外”（Exception）中声明了的子域。非常重要的一点是要理解NSExceptionAllowsInsecureHTTPLoads关键字并不仅仅只是与使用HTTPS相关。这个“例外”（Exception）指明了对于那个域名，所有的App Transport Security的要求都被撤销了。
 
@@ -693,7 +708,7 @@ Invalid certificates result in a hard failure and no connection
 
 上面已经介绍了三种情景，还有一种可能你也会遇到：
 
-当你的应用撤消了App Transport Security,，但同时定义了一些“例外”（Exception）。当你的应用从很多的服务器上取数据，但是也要与一个你可控的API交互。在这种情况下，在应用的Info.plist文件中指定任何加载都是被允许的，但是你也指定了一个或多个“例外”（Exception）来表明哪些是必须要求 App Transport Security的。下面是Info.plist文件应该会有的内容：
+当你禁用ATS的同时又想定义一些“例外”（Exception）。这个应用场景是当你的应用需要从很多不符合ATS要求的服务器上取数据，但是也要与一个你可控的API(符合ATS要求)交互。在这种情况下，在应用的Info.plist文件中配置为允许所有请求，但是你也指定了一个或多个“例外”（Exception）来表明哪些地址是必须符合 App Transport Security 要求的。下面是Info.plist文件应该会有的内容：
 
 
  ```XML
@@ -807,6 +822,7 @@ A：
  2. 服务的Ciphers配置要求支持Forward Secrecy等
  3. 证书签名算法符合ATS要求等
 
+
 ##2.Demo2_iOS9新特性_更灵活的后台定位
 
 【iOS9在定位的问题上，有一个坏消息一个好消息】坏消息：如果不适配iOS9，就不能偷偷在后台定位（不带蓝条，见图）！好消息：将允许出现这种场景：同一App中的多个location manager：一些只能在前台定位，另一些可在后台定位，并可随时开启或者关闭特定location manager的后台定位。
@@ -842,6 +858,10 @@ A：
 > *** Assertion failure in -[CLLocationManager setAllowsBackgroundLocationUpdates:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/CoreLocationFramework_Sim/CoreLocation-1808.1.5/Framework/CoreLocation/CLLocationManager.m:593
 
 
+这个问题，有两种方式可以解决：
+
+第一种：
+
 要将  Info.plist 配置如下：
  ![enter image description here][8]
 
@@ -856,6 +876,12 @@ A：
     <array>
         <string>location</string>
     </array>
+
+第二种：
+
+在对应 target 的 Capabilities -> Background Modes -> 开启 Location Updates 
+
+![enter image description here](http://cdn2.raywenderlich.com/wp-content/uploads/2014/12/background_modes.png)
 
 
 
@@ -1024,14 +1050,32 @@ iOS9升级后众多企业分发的 app 已经出现了不能安装的情况，�
 
  2. 使用fir.im等第三方分发平台：上述“ bundle id 不一致导致下载失败”这种情况只会出现在企业自己搭建网页分发的情形下，事实证明第三方的分发平台更加专业，已经很好地规避了该情况的发生。
 
-###Q-A
+### 3. 企业APP安装之后，在网络情况为Wi-Fi环境的时候，可能会出现无法验证应用的情况。出现以下提示：
+
+**无法验证"**** Co.,Ltd"应用，需要网络连接以在这台iPhone上验证"**** Co.,Ltd"应用。接入互联网并重试。**
+
+![](http://i63.tinypic.com/10ho85w.jpg)  
+![](http://i66.tinypic.com/30ucruo.jpg)  
+![](http://i66.tinypic.com/w14qi1.jpg)
+
+而此时，Wi-Fi网络是接入互联网的。如果多次验证不通过的话，我们需要切换到非Wi-Fi网络环境下才能解决这个问题。
+
+### Q-A
 
 Q：企业分发，企业版证书在iOS9上安装应用报 ` Ignore manifest download, already have bundleID: com.mycom.MyApp`  只有我的手机无法安装，别人 iOS9 都可以安装
 
 A：这并非 iOS9的问题，iOS8及以前的系统也会出现，和缓存有关系，请尝试关机重启手机，然后就可以安装了。
 
+ 
+ Q：为什么用微信扫描二维码不能直接下载？
+ 
+ A：部分市场支持直接扫描二维码下载（如蒲公英，fir.im等）,但是用微信扫描二维码不能直接。因为安装app所在页面必须要符合苹果`itms-services`协议，在不符合该协议的页面点击安装会没有反应。比如使用微信、QQ扫描点击安装会没有反应。
 
-##4.Bitcode
+此时需要在微信或QQ安装页面点击右上角按钮，在弹出框里找到使用Safari浏览器打开选项，点击跳转到系统浏览器Safari里后再点击“安装”按钮进行安装。
+
+部分第三分浏览器支持`itms-services`协议，可以直接点击安装。
+
+## 4.Bitcode
 
 【前言】未来， Watch 应用必须包含 bitcode ，iOS不强制，Mac OS不支持。
 但最坑的一点是： Xcode7 及以上版本会默认开启 bitcode 。
@@ -1164,6 +1208,24 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 那么 SDK 厂商如何支持 bitcode 呢？答案是只要在 Xcode7上重新编译一下就 ok 了。（请确保默认开启的 bitcode 没有去主动关闭）
 
+但是如果仅仅是编译一下，则会出现下类似的如下警告：
+
+![enter image description here](http://image17-c.poco.cn/mypoco/myphoto/20150928/17/1733887242015092817143106.jpg?1462x120_120
+)
+
+
+
+ > ld: warning: full bitcode bundle could not be generated because 'Lookback(Lookback.o)' was built only with bitcode marker. The library must be generated from Xcode archive build with bitcode enabled (Xcode setting ENABLE_BITCODE)
+
+
+
+警告的消除步骤：
+
+模拟器、真机分开打包，SDK在build的时候，让模拟器与真机分开build，模拟器不设置bitcode的参数，真机的加上，然后再合起来。（“合起来”指的是指令集，好比 x86_64 i386 跟 armv7 arm64合起来。）用命令行打包的话 加上这个参数OTHER_CFLAGS=“-fembed-bitcode”。
+
+详情可移步：[ ***How do I xcodebuild a static library with Bitcode enabled?*** ](http://stackoverflow.com/a/31486233/3395008) 
+
+
 更多信息，请移步
 
  1. [bitcode 苹果官方文档][16]
@@ -1258,7 +1320,7 @@ Demo结构如下：
         <string>weixin</string>
     </array>
 
-（以上只是为了演示，实际开发中，你不仅需要添加“weixin”还需要“wechat”这两个。具体 ）
+（以上只是为了演示，实际开发中，你不仅需要添加“weixin”还需要“wechat”这两个。具体下文给出表格）
 
 
  <p><del>关于 `openURL:` 这个问题，可在 Demo3 中自行测试，如果该 bug 修复了的话，请私信[微博@iOS程序犭袁](http://weibo.com/luohanchenyilong/)，我再来更新本文。（经测试：iOS9 beta5中已经修复）</del></p>
@@ -1343,7 +1405,7 @@ QZONE | mqzoneopensdk, </p>mqzoneopensdkapi,</p>mqzoneopensdkapi19,</p>mqzoneope
 易信 | yixin,</p> yixinopenapi
 Google+ | googlechrome, </p>googlechrome-x-callback,</p>hasgplus4,</p>com.google.gppconsent,</p>com.google.gppconsent.2.2.0,</p>com.google.gppconsent.2.3.0,</p>com.google.gppconsent.2.4.0,</p>com.google.gppconsent.2.4.1 |
 人人网 |  renrenapi,</p>renrenios,</p>renreniphone,</p>renren, | 
-Facebook | fbauth2 |
+Facebook | 见下文 |
 Twitter | 无需配置 |
 Pocket | pocket-oauth-v1|
 Pinterest | pinit |
@@ -1356,6 +1418,50 @@ LinkedIn | 无需配置 |
 Tumblr | 无需配置 |
 非平台类 | 无需配置 | ( 如短信，复制，邮件等)
 
+
+
+
+另外， Facebook 的URL Scheme白名单需要注意：
+
+如果 SDK 版本低于 4.5 应补充
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>fbapi</string>
+    <string>fbapi20130214</string>
+    <string>fbapi20130410</string>
+    <string>fbapi20130702</string>
+    <string>fbapi20131010</string>
+    <string>fbapi20131219</string>    
+    <string>fbapi20140410</string>
+    <string>fbapi20140116</string>
+    <string>fbapi20150313</string>
+    <string>fbapi20150629</string>
+    <string>fbauth</string>
+    <string>fbauth2</string>
+    <string>fb-messenger-api20140430</string>
+</array>
+```
+
+如果使用 FBSDKMessengerShareKit，还要加上
+```
+<string>fb-messenger-platform-20150128</string>
+<string>fb-messenger-platform-20150218</string>
+<string>fb-messenger-platform-20150305</string>
+```
+
+如果使用SDK版本高于4.6，则只需要加上
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+        <string>fbapi</string>
+        <string>fb-messenger-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+</array>
+```
+
+ [参考链接](https://developers.facebook.com/docs/ios/ios9) 。
 
 
 ### Q-A
@@ -1454,7 +1560,14 @@ CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
 
 ### iOS9 下使用 Masonry 会引起崩溃的一种情况
  
-我们在使用时候一直将 leading 与 left 划为等号，这样做在 iOS8（及以前）上是正常的，但在 iOS9 上这样的观念可能会引起崩溃，比如：
+在 iOS8（及以前）我们有这样的经验：
+
+ >   `leading 与 left`  、 `trailing 与 right`  在正常情况下是等价的 但是当一些布局是从右至左时(比如阿拉伯文?没有类似的经验) 则会对调，换句话说就是基本可以不理不用，用left和right就好了
+
+（摘自 [《Masonry介绍与使用实践(快速上手Autolayout)》](http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/) ）
+
+
+但在概念里，还是一直将 leading 与 left 划为等号，这样做在 iOS8（及以前）上是正常的，但在 iOS9 上这样的观念可能会引起崩溃，比如：
 
  ```Objective-C
  make.left.equalTo(self.mas_leading).offset(15);
@@ -1467,6 +1580,40 @@ CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
  ```
 
 同理 mas_training 也需要改为right
+
+同时也有人反馈说也需要作如下调整否则也会崩溃：
+
+toplayoutGuide 替换成 mas_toplayoutguide
+bottomlayoutguide 替换成 mas_bottomlayoutguide
+
+而且使用类似 `make.top.equalTo(topView.mas_baseline).with.offset(5);` 涉及 `mas_baseline` 的语句也会引起崩溃。
+
+暂时的解决方案是
+
+使用 `make.top.equalTo(self.mas_topLayoutGuide).with.offset(5);` 来替换原来的  `self.topLayoutGuide.mas_baseline`  反正效果是一样的
+
+原来的代码：
+
+ ```Objective-C
+[self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *topView = (UIView *)self.topLayoutGuide;
+    make.top.equalTo(topView.mas_baseline).with.offset(5);
+    make.leading.equalTo(self.view.mas_leading).with.offset(10);
+    make.right.equalTo(self.view.mas_right).with.offset(-10);
+    make.height.equalTo(@34);
+}];
+ ```
+
+修改后：
+
+ ```Objective-C
+[self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    make.top.equalTo(self.mas_topLayoutGuide).with.offset(5);
+    make.left.equalTo(self.view.mas_left).with.offset(10);
+    make.right.equalTo(self.view.mas_right).with.offset(-10);
+    make.height.equalTo(@34);
+}];
+ ```
 
 ### Xcode 升级后，旧的状态栏的样式设置方式会引起警告
 
@@ -1541,7 +1688,7 @@ CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
      self.window.rootViewController = self.navigationController;
  ```
 
-因为 rootViewController 变为了 navigationController，你在 ViewController 里重写 preferredStatusBarStyle 方法是不会起作用的。所以最好的方法是
+因为 rootViewController 变为了 navigationController，你在 ViewController 里重写 preferredStatusBarStyle 方法是不会起作用的。所以最好的方法是：
 
 
 
@@ -1556,6 +1703,8 @@ CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
 
 
 如果你还是想重写 preferredStatusBarStyle 方法来达到作用，那最好使用分类来解决：
+
+第二种方法：
 
 .h文件：
 
@@ -1601,7 +1750,36 @@ CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
 @end
  ```
 
-我在仓库里给出了 navigation 的设置方法，见Demo4。
+但最好不要通过 Category 重写 `preferredStatusBarStyle` 的方式来指定 status bar 样式。按照苹果官方的解释：
+
+ > If the name of a method declared in a category is the same as a method in the original class, or a method in another category on the same class (or even a superclass), the behavior is undefined as to which method implementation is used at runtime. This is less likely to be an issue if you’re using categories with your own classes, but can cause problems when using categories to add methods to standard Cocoa or Cocoa Touch classes.
+
+所以推荐第一种的方法，不推荐第二种。
+
+我在仓库里给出了 navigation 的两种设置方法，见Demo4。
+
+
+ 第三种方法：
+ 
+ ```Objective-C
+ - (UIViewController *)childViewControllerForStatusBarStyle;
+ ```
+ 
+ 按照苹果官方的解释：
+ 
+ > If your container view controller derives its status bar style from one of its child view controllers, implement this method and return that child view controller. If you return nil or do not override this method, the status bar style for self is used. If the return value from this method changes, call the setNeedsStatusBarAppearanceUpdate method.
+ 
+ 调用 `setNeedsStatusBarAppearanceUpdate` 时，系统默认会去调用application.rootViewController的 `preferredStatusBarStyle` 方法，所以这时候当前自己的 viewController 的 `preferredStatusBarStyle` 方法根本不会被调用。
+ 
+ 这个接口很重要，这种情况下 `childViewControllerForStatusBarStyle` 就有用了。一般我们常用 navigationController 作为 rootViewController，利用此接口便可以很方便自订各个 viewController 的 statusBarStyle。 子类化一个 navigationController，并且 override `childViewControllerForStatusBarStyle`
+ 
+ ```Objective-C
+ - (UIViewController * _Nullable)childViewControllerForStatusBarStyle {
+     return self.topViewController;
+ }
+ ```
+ 
+ 意思就是说不要调用我自己 `application.rootViewController（navigationController）` 的 `preferredStatusBarStyle` 方法，去调用｀childViewControllerForStatusBarStyle｀ 回传的 UIViewController 的 `preferredStatusBarStyle`。这裡回传 self.topViewController 就可以保证当前显示的 viewController 的 `preferredStatusBarStyle` 会被系统调用且正确的显示。
 
 参考链接： [preferredStatusBarStyle isn't called--For anyone using a UINavigationController:](http://stackoverflow.com/a/19513714/3395008) 
 
@@ -1655,7 +1833,7 @@ bulid settings  ->    packaging  -> product name
 加入运行如下示例代码：
 
  ```Objective-C
- - (void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^(void) {
@@ -1667,11 +1845,11 @@ bulid settings  ->    packaging  -> product name
 }
  ```
 
-应用运行过称中锁屏，总是会出现以下提示：
+应用运行过程中锁屏，总是会出现以下提示：
 
 
  ```Objective-C
-   ** -[UIApplication _handleNonLaunchSpecificActions:forScene:withTransitionContext:completion:] ** unhandled action -> <FBSSceneSnapshotAction: 0x16da76c0> {
+** -[UIApplication _handleNonLaunchSpecificActions:forScene:withTransitionContext:completion:] ** unhandled action -> <FBSSceneSnapshotAction: 0x16da76c0> {
     handler = remote;
     info = <BSSettings: 0x16d80e50> {
         (1) = 5;
@@ -1687,7 +1865,7 @@ bulid settings  ->    packaging  -> product name
 
 
  ```Objective-C
-  ** -[UIApplication _handleNonLaunchSpecificActions:forScene:withTransitionContext:completion:] ** unhandled action -> <FBSSceneSnapshotAction: 0x16da76c0> {
+** -[UIApplication _handleNonLaunchSpecificActions:forScene:withTransitionContext:completion:] ** unhandled action -> <FBSSceneSnapshotAction: 0x16da76c0> {
     handler = remote;
     info = <BSSettings: 0x16d80e50> {
         (1) = 5;
@@ -1702,11 +1880,70 @@ error in __connection_block_invoke_2: Connection interrupted
 
 对此并未找到合理的解释和对应的解决办法，如果你有解决方法，欢迎提 PR !
 
+### 在`didFinishLaunchingWithOptions`结束后还没有设置window的`rootViewController`会导致崩溃
+
+
+
+
+ iOS9 不允许在 `didFinishLaunchingWithOptions` 结束了之后，还没有设置 window 的 `rootViewController` 。 也许是 Xcode7 的编译器本身就不支持。
+
+崩溃时的控制台日志提示：
+
+ ```Objective-C
+*** Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3505.16/UIApplication.m:3294
+
+***  Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Application windows are expected to have a root view controller at the end of application launch'
+
+*** First throw call stack:
+/*省略*/
+libc++abi.dylib: terminating with uncaught exception of type NSException
+(lldb) 
+ ```
+
+解决的方法是先设初始化个值，之后再赋值替换掉：
+
+
+
+ ```Objective-C
+UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreenmainScreen].bounds];
+window.rootViewController = [[UIViewController alloc] init];
+ ```
+
+
+
+
+尤其注意一种情况，在 iOS8以前，我们有时候会通过在 AppDelegate 中添加另一个 UIWindow ，并修改其 Level 来达到 addSubview 的效果，因而也不设置 window 的 `rootViewController` ，而是把它直接以视图的形式展示了，则在 iOS8 上是警告，在 iOS9 上就崩溃了。
+
+ ```Objective-C
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor yellowColor];
+    [self.window makeKeyAndVisible];
+    
+    UIWindow *normalWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    normalWindow.backgroundColor = [UIColor blueColor];
+    normalWindow.windowLevel = UIWindowLevelAlert;
+    [normalWindow makeKeyAndVisible];
+    
+    return YES;
+}
+ ```
+
+
+这种情况，在 `didFinishLaunchingWithOptions` 需要修改原来的策略，将第二个 window 类型改为其他类型，比如 viewController 类型、navigation 类型、tabbarController 类型等。
+ 
+
 ## 9.Demo5、Demo6--- 搜索 API
 
 导入两个 framework，
 
-然后像设置tableView 的 cell 一样设置下每一个“搜索元素”，详情见代码。
+然后像设置tableView 的 cell 一样设置下每一个“搜索元素”，搜索元素的组成如下：
+
+
+![enter image description here](http://i57.tinypic.com/144b22w.jpg)
+
+
+详情见 Demo6 代码。
 
 
 ![enter image description here](http://image17-c.poco.cn/mypoco/myphoto/20150923/21/17338872420150923214730010.gif?370x686_110
@@ -1757,11 +1994,62 @@ if ([currentLanguage hasPrefix:@"zh-Hans"])
 
 **备注：以上iOS9 当前语言字符串返回结果：语言字符串代码 + 地区代码。在某些情况下不是这样，本人手机型号：大陆版电信iPhone5S/A1533/16GB测试结果：zh-HK/zh-TW，在地区为"中国"、"中国香港"、"中国台湾"的时候，显示的还是zh-HK/zh-TW，一旦切换到其它地区，设备语言会自动的切换到中文繁体。请开发人员注意中文的问题！**
 
+
+
+## 11.UITableView显示异常
+
+原本在 Xcode6 上完好的项目，在 Xcode7 上一编译， `tableView` 出了两个问题 ：
+
+
+ 1.  代码创建的 `tableView` 无法隐藏 cell 分割线
+ 2.  `reloadData` 刷新失效；
+
+
+### 代码创建的 `tableView` 无法隐藏 cell 分割线
+
+iOS9 里面用到 tableView 突然跑出来了很多 cell 的分割线， 但是在用xib创建的 tableview，就不存在这个问题
+
+解决方法是将设置分割线隐藏的方法 `self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;` 写在 `-layoutSubviews` 中：
+
+ ```Objective-C
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+ ```
+
+也有人发现另一种方法，就是每次 reloadData 之前都进行一次设置：设置分割线隐藏，这样也可以解决：
+
+
+
+ ```Objective-C
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+   [self.tableView reloadData]
+ ```
+
+虽然也可以解决但是不推荐，这样写会给其他人造成困扰：不知所云。
+
+
+### `reloadData` 刷新失效
+
+现象： `[tableView reloadData]` 无效，有一行 cell 明明改变了但是刷新不出来。
+
+
+ 感觉可能是这个方法和某种新加的特性冲突了，猜测可能是 `reloadData` 的操作被推迟到下一个 `RunLoop` 执行最终失效。
+
+解决的方法是，注释 `[tableView reloadData]` ，改用局部刷新：
+
+ ```Objective-C
+[self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+ ```
+
+这两个推测均属 Xcode7 的bug，将来 Apple 肯定会修复。
+
+
 #结束语
-如果你在开发中遇到什么新的 iOS9 的坑，或者有什么适配细节本文没有提及，欢迎给本仓库提 pull request。也欢迎在[微博@iOS程序犭袁](http://weibo.com/luohanchenyilong/)  或在“iOS9开发学习交流群：141607754”中交流。
+如果你在开发中遇到什么新的 iOS9 的坑，或者有什么适配细节本文没有提及，欢迎给本仓库提 pull request。也欢迎在[微博@iOS程序犭袁](http://weibo.com/luohanchenyilong/)  或在“iOS9开发学习交流群：523070828”中交流。
 
 疏漏之处，可前往阅读下[这个网站](http://asciiwwdc.com)，这里有每年 WWDC 演讲的英文记录。
-
 
 ----------
 
